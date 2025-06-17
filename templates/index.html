@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗼 Tower of Hanoi Solver</h1>
+            <p>Watch the optimal solution unfold step by step!</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="discCount">Number of Discs (1-10):</label>
+                <input type="number" id="discCount" min="1" max="10" value="3">
+                <button id="solveBtn" onclick="solvePuzzle()">Solve Puzzle</button>
+            </div>
+        </div>
+
+        <div class="info-section" id="infoSection" style="display: none;">
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Current Move:</span>
+                    <span class="stat-value" id="currentMove">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Moves:</span>
+                    <span class="stat-value" id="totalMoves">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Optimal Moves:</span>
+                    <span class="stat-value" id="optimalMoves">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-section" id="gameSection" style="display: none;">
+            <div class="towers-container">
+                <div class="tower" id="towerA">
+                    <h3>Tower A</h3>
+                    <div class="tower-pole"></div>
+                    <div class="tower-base"></div>
+                    <div class="discs-container" id="discsA"></div>
+                </div>
+                <div class="tower" id="towerB">
+                    <h3>Tower B</h3>
+                    <div class="tower-pole"></div>
+                    <div class="tower-base"></div>
+                    <div class="discs-container" id="discsB"></div>
+                </div>
+                <div class="tower" id="towerC">
+                    <h3>Tower C</h3>
+                    <div class="tower-pole"></div>
+                    <div class="tower-base"></div>
+                    <div class="discs-container" id="discsC"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="move-info" id="moveInfo" style="display: none;">
+            <div class="move-description" id="moveDescription"></div>
+        </div>
+
+        <div class="controls" id="controls" style="display: none;">
+            <button id="prevBtn" onclick="previousMove()" disabled>Previous</button>
+            <button id="playPauseBtn" onclick="togglePlayPause()">▶️ Play</button>
+            <button id="nextBtn" onclick="nextMove()">Next</button>
+            <button id="resetBtn" onclick="resetPuzzle()">Reset</button>
+        </div>
+
+        <div class="completion-message" id="completionMessage" style="display: none;">
+            <h2>🎉 Puzzle Solved!</h2>
+            <p>Completed in <span id="finalMoveCount"></span> moves - the optimal solution!</p>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Calculating optimal solution...</p>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
